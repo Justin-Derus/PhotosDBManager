@@ -689,9 +689,7 @@ public class MySQLConnection{
 
     public String getDriverType(){return "jdbc:mysql:";}
 
-    //public String getHost(){return "//10.0.0.14:3306/website";}
-
-    public String getHost(){return "//localhost:3306/website";}
+    public String getHost(){return "//localhost:3306/photosdbmanager";}
 
     public String getUser(){return "dev";}
 
@@ -722,8 +720,6 @@ public class MySQLConnection{
     public MyImage getImageForUpdate() {return imageForUpdate;}
 
     public void setImageForUpdate(MyImage imageForUpdate) {this.imageForUpdate = imageForUpdate;}
-
-    //public String getUserDesktop() {return "scoey";}
 
     public String getUserDesktop() {return "dev";}
 
