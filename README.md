@@ -2,4 +2,4 @@
 Java GUI to manage database for photos
 
 
-THE .EXE FILE IS GENERATED USING LAUNCH4J AND THEREFOR WILL BE DETECTED AS A VIRUS, SOURCE CODE IS IN THE SRC DIRECTORY
+PhotosDBManager.exe is generated using LAUNCH4J and might be detected as a virus - source code is found in /src
