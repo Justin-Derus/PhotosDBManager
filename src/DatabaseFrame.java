@@ -490,7 +490,7 @@ public class DatabaseFrame extends JFrame{
         tabbedPane.addTab("Edit Tags/Cameras", editTagCamTab);
 
         JMenuBar bar = new JMenuBar();
-        JLabel logo = new JLabel("DBDive");
+        JLabel logo = new JLabel("Photos Database Manager");
         logo.setFont(new Font("Segoe Script", Font.BOLD,15));
         bar.add(logo);
         setJMenuBar(bar);
