@@ -206,7 +206,6 @@ public class MySQLConnection{
                 //Create a clickable thumbnail, when clicked it will display all image info from the DB
                 //Setting image icon here
                 JButton thumbnail = new JButton(chunks.get(0)); //only possible index
-                System.out.println("hehehehe: " + chunks.get(0));
 
                 //Increment counter to display all available images
                 thumbnailCount++;
@@ -270,7 +269,7 @@ public class MySQLConnection{
     }
 
     //called in database frame on submitImageUpdateButton
-    public void updateImageInDatabase(JTextField location, JTextArea caption, JList<Object> camList, JList<Object> tagList, JLabel imgLabel) throws SQLException {
+    public void updateImageInDB(JTextField location, JTextArea caption, JList<Object> camList, JList<Object> tagList, JLabel imgLabel) throws SQLException {
         SwingWorker<List<Void>, Void> worker = new SwingWorker<List<Void>, Void>() {
             @Override
             protected List<Void> doInBackground() throws Exception {
@@ -325,7 +324,7 @@ public class MySQLConnection{
         return 3; //changes made - update
     }
 
-    protected void deleteImageFromDatabase(JTextField location, JTextArea caption, JList<Object> camList, JList<Object> tagList,
+    protected void deleteImageFromDB(JTextField location, JTextArea caption, JList<Object> camList, JList<Object> tagList,
                                            JPanel iconGrid, JLabel loading, JLabel imgLabel) throws SQLException{
         SwingWorker<List<Void>,Void> worker = new SwingWorker<List<Void>,Void>() {
             @Override
@@ -546,10 +545,12 @@ public class MySQLConnection{
         if(connection != null) {
             Statement statement = connection.createStatement();
             ResultSet resultSet;
-            //since `id` has A_I, get the last known A_I and use it as the next id
-            resultSet = statement.executeQuery("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'images';");
+            //since `id` has A_I, get the last known A_I, add 1 and use that for file naming - file name will now match A_I id
+            resultSet = statement.executeQuery("SELECT MAX(id) FROM `images`;"); //retrieve the last auto incremented id from the images table
+            //IT WILL ALWAYS BE MAX BECAUSE IT IS AUTO INCREMENTED
             while (resultSet.next()) {
                 id = resultSet.getInt(1);
+                id = id +1; //increment to the next available id <- used for file naming purposes
             }
         }
         return id;
@@ -608,6 +609,7 @@ public class MySQLConnection{
     }
 
     public String copyImageFile(File img, int id) throws IOException {
+        System.out.println("Copying id: " + id);
         FileInputStream fis = null;
         FileOutputStream fos = null;
         System.out.println("Copying file from: " + img);

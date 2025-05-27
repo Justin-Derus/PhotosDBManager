@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PhotosDBManager:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PhotosDBManager_jar</output-path>
+    <root id="archive" name="PhotosDBManager.jar">
+      <element id="module-output" name="PhotosDBManager" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/flatlaf-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/flatlaf-intellij-themes-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-j-8.3.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
