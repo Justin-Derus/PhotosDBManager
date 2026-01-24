@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.nio.channels.FileChannel;
 
 public class MySQLConnection{
     private Connection connection;  //MySQL Connection used to link the files together for usage of MySQL
@@ -610,52 +611,18 @@ public class MySQLConnection{
 
     public String copyImageFile(File img, int id) throws IOException {
         System.out.println("Copying id: " + id);
-        FileInputStream fis = null;
-        FileOutputStream fos = null;
         System.out.println("Copying file from: " + img);
         String imageNameString = img.getName();
         String[] imgStrArray = imageNameString.split("\\.");
         String fileExtension = imgStrArray[1];
-        try {
+        try (
+                FileChannel sourceChannel = new FileInputStream(img).getChannel();
+                FileChannel destChannel = new FileOutputStream(getImgDir() + "IMG" + id + "." + fileExtension).getChannel()
+                ){
 
-            fis = new FileInputStream(img);
-            //get image from source and copy to new spot
-            fos = new FileOutputStream(getImgDir() + "IMG" + id + "." + fileExtension);
-            int c;
-
-            // Condition check
-            // Reading the input file till there is input
-            // present
-            while ((c = fis.read()) != -1) {
-
-                // Writing to output file of the specified
-                // directory
-                fos.write(c);
-            }
-
-            // By now writing to the file has ended, so
-
-            // Display message on the console
-            System.out.println("Copied the file successfully to: " + getImgDir() + "IMG" + id + "." + fileExtension);
-        }   // Optional finally keyword but is good practice to
-        // empty the occupied space is recommended whenever
-        // closing files,connections,streams
-        finally {
-
-            // Closing the streams
-
-            if (fis != null) {
-
-                // Closing the fileInputStream
-                fis.close();
-            }
-            if (fos != null) {
-
-                // Closing the fileOutputStream
-                fos.close();
-            }
+            sourceChannel.transferTo(0, sourceChannel.size(), destChannel);
         }
-        //MUST HAVE 4 \'S - GETS LOST IN DB INSERTION WITH ONLY 2
+
         return (getImgDir() + "IMG" + id + "." + fileExtension);
     }
 

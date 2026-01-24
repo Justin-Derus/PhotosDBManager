@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5222553-0f9b-445d-974a-e6c8552996b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/DatabaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PhotosDBManagerFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MySQLConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PhotosDBManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PhotosDBManagerApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
